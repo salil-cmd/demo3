@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- <script src="../node_modules/web3/dist/web3.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+
+
+</head>
+
+<body>
+    <h1>This is home page!</h1>
+
+    <button onclick="registerUser();">Store</button>
+    <input type="text" id="email" placeholder="email">
+    <input type="text" id="referralId" placeholder="Reference ID">
+
+    <script>
+
+        let emailInput = document.getElementById("email")
+        let referralInput = document.getElementById("referralId")
+
+
+        async function registerUser() {
+
+            // Sending the connected account to the server using post request
+            let dataToServer =
+            {
+                data1: emailInput.value,
+                data2: referralInput.value
+            }
+
+            let res = await axios.post('/register', dataToServer);
+            console.log(res.data)
+
+
+        }
+
+
+
+    </script>
+</body>
+
+
+
+</html>

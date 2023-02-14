@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- <script src="../node_modules/web3/dist/web3.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+
+
+</head>
+
+<body>
+    <h1>This is home page!</h1>
+
+    <button onclick="sendEther();">Send money</button>
+    <input type="text" id="addressInput">
+
+    <script>
+
+        let addressInput = document.getElementById("addressInput")
+
+        let web3 = new Web3(window.ethereum);
+
+        async function sendEther() {
+            const gotAccounts = await web3.eth.getAccounts();
+            console.log(addressInput.value)
+            
+            // Sending the connected account to the server using post request
+            let accountToServer = { account: gotAccounts[0], receiver: addressInput.value }
+
+            let res = await axios.post('/sendMoney', accountToServer);
+            console.log(res.data.receipt)
+
+
+        }
+
+
+
+    </script>
+</body>
+
+
+
+</html>

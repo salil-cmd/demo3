@@ -32,38 +32,47 @@ let users = {
 
 let id = 1;
 
-app.post('/register', (req, res) => {
-    let gotData = req.body;
-    id++;
+// app.post('/register', (req, res) => {
+//     let gotData = req.body;
+//     id++;
 
-    let currentUser = {
-        email : gotData.data1,
-        userId : id,
-        direct_referrals : 0,
-        current_referral : gotData.data2,
-        current_title : ""
-    }
+//     let currentUser = {
+//         email : gotData.data1,
+//         userId : id,
+//         direct_referrals : 0,
+//         current_referral : gotData.data2,
+//         current_title : ""
+//     }
 
-    // Storing in object
-    users[id] = currentUser;
+//     // Storing in object
+//     users[id] = currentUser;
 
-    // Update direct referral of the current user
-    users[gotData.data2].direct_referrals++;
+//     // Update direct referral of the current user
+//     users[gotData.data2].direct_referrals++;
 
-    // Changing title to Agent
-    if(users[gotData.data2].direct_referrals == 5){
-        users[gotData.data2].current_title = "Agent"
-    }
+//     // Changing title to Agent
+//     if(users[gotData.data2].direct_referrals == 5){
+//         users[gotData.data2].current_title = "Agent"
+//     }
 
-    console.log(users);
+//     console.log(users);
     
-    return res.json({
-        msg : "User Registered!"
-    })
-})
+//     return res.json({
+//         msg : "User Registered!"
+//     })
+// })
 
 
 // Listening on port 
+
+app.post('/register', (req, res) => {
+    console.log(req.body.data1);
+    console.log(req.body.data2);
+    return res.send("I love you tubbu from dugu")
+})
+
+
+
 app.listen(80, ()=>{
     console.log("Listening on port 80...");
 })

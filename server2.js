@@ -68,7 +68,7 @@ let id = 1;
 app.post('/register', (req, res) => {
     console.log(req.body.data1);
     console.log(req.body.data2);
-    return res.send("I love you tubbu from dugu")
+    return res.send("I love you tubbu from dugu and mera bccha")
 })
 
 
